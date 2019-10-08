@@ -4,5 +4,5 @@
 
 Berikut merupakan desain infrastruktur:
 
- ![Desain Infrastruktur](Desain Infrastruktur.png)
+ ![Desain Infrastruktur](./Desain Infrastruktur.png)
 
