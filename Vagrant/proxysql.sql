@@ -1,4 +1,4 @@
-UPDATE global_variables SET variable_value='admin:password' WHERE variable_name='admin-admin_credentials';
+UPDATE global_variables SET variable_value='admin:password;posuser:pospassword' WHERE variable_name='admin-admin_credentials';
 LOAD ADMIN VARIABLES TO RUNTIME;
 SAVE ADMIN VARIABLES TO DISK;
 
