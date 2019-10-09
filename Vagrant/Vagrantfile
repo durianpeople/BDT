@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "db#{i}"
         vb.gui = false
-        vb.memory = "1024"
+        vb.memory = "512"
       end
   
       node.vm.provision "shell", path: "deployMySQL1#{i}.sh", privileged: false
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     proxy.vm.provider "virtualbox" do |vb|
       vb.name = "proxy"
       vb.gui = false
-      vb.memory = "1024"
+      vb.memory = "512"
     end
 
     proxy.vm.provision "shell", path: "deployProxySQL.sh", privileged: false
