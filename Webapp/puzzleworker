@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+/**
+ * PuzzleOS
+ * Build your own web-based application
+ *
+ * @package      maral.puzzleos.core
+ * @author       Mohammad Ardika Rifqi <rifweb.android@gmail.com>
+ * @copyright    2014-2018 MARAL INDUSTRIES
+ */
+
+define("__POSEXEC", 1);
+define("__POSWORKER",1);
+
+require("bootstrap/boot.php");
+
+/* Run the Worker */
+Worker::__do($argv);
