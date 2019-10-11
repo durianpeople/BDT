@@ -19,7 +19,7 @@ if($_POST["finale"] == "yes"){
 	}
 	
 	/* Testing database connection */
-	$db = mysqli_connect($_POST["dbhost"],$_POST["dbuser"],$_POST["dbpass"],$_POST["dbname"]);  //Check for database existance
+	$db = mysqli_connect($_POST["dbhost"],$_POST["dbuser"],$_POST["dbpass"],$_POST["dbname"], $_POST['dbport']);  //Check for database existance
 	if(!$db) die("1");
 	$db->close();
 
@@ -29,6 +29,7 @@ if($_POST["finale"] == "yes"){
 	$sample = str_replace("%DB_PASS%",$_POST["dbpass"],$sample);
 	$sample = str_replace("%DB_HOST%",$_POST["dbhost"],$sample);
 	$sample = str_replace("%DB_NAME%",$_POST["dbname"],$sample);
+	$sample = str_replace("%DB_PORT%",$_POST["dbport"],$sample);
 	$sample = str_replace("%MAIL_FROM%","",$sample);
 	$sample = str_replace("%MAIL_SENDER%","",$sample);
 	$sample = str_replace("%MAIL_USEPHP%","true",$sample);
@@ -288,6 +289,12 @@ if($_POST["finale"] == "yes"){
 					<label class="col-lg-3 control-label">Database password</label>
 					<div class="col-lg-9 row" style="margin:0px;">
 						<input type="password" class="form-control" placeholder="This can be blank" autocomplete="off" name="dbpass">
+					</div>
+				</div><br>
+				<div class="row">
+					<label class="col-lg-3 control-label">Database port</label>
+					<div class="col-lg-9 row" style="margin:0px;">
+						<input type="text" class="form-control" placeholder="This can be blank" autocomplete="off" name="dbport">
 					</div>
 				</div><br>
 				<button next-tab="step1" type="button" class="tabSwitch back btn btn-primary btn-big">Back</button>

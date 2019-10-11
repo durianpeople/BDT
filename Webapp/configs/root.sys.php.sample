@@ -13,6 +13,7 @@ POSConfigDB::$username = "%DB_USER%";
 POSConfigDB::$password = "%DB_PASS%";
 POSConfigDB::$host = "%DB_HOST%";
 POSConfigDB::$database_name = "%DB_NAME%";
+POSConfigDB::$port = "%DB_PORT%";
 
 /**
  * Mailer Settings

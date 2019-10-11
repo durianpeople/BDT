@@ -83,6 +83,12 @@ $l = new Language;?>
 			</div>
 			<input type="text" class="form-control" name="dbdb" placeholder="<?php $l->dump("DATABASE")?>" value="<?php echo POSConfigDB::$database_name ?>">
 		</div>
+		<div class="input-group" style="margin-bottom:10px">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-database"></i></span>
+			</div>
+			<input type="text" class="form-control" name="dbport" placeholder="<?php $l->dump("DATABASE")?>" value="<?php echo POSConfigDB::$port ?>">
+		</div>
 		</fieldset><br>
 	</div>
 	<div class="col-md-6">

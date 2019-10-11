@@ -266,7 +266,7 @@ class Database
 	{
 		if (!is_callbyme()) throw new DatabaseError("Database violation!");
 
-		self::$link = @new mysqli(POSConfigDB::$host, POSConfigDB::$username, POSConfigDB::$password, POSConfigDB::$database_name);
+		self::$link = @new mysqli(POSConfigDB::$host, POSConfigDB::$username, POSConfigDB::$password, POSConfigDB::$database_name, POSConfigDB::$port);
 		if (self::$link->connect_error) {
 			abort(503, "Internal Server Error", false);
 			throw new DatabaseError(self::$link->connect_error, "PuzzleOS only supports MySQL or MariaDB", (int) self::$link->connect_errno);

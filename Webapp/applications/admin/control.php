@@ -19,6 +19,7 @@ if($appProp->isMainApp){
 			POSConfigDB::$password = str_replace("'","\"",$_POST["dbpass"]);
 			POSConfigDB::$host = str_replace("'","\"",$_POST["dbhost"]);
 			POSConfigDB::$database_name = str_replace("'","\"",$_POST["dbdb"]);
+			POSConfigDB::$port = str_replace("'","\"",$_POST["dbport"]);
 			POSConfigGlobal::$default_language = str_replace("'","\"",$_POST["deflang"]);
 			POSConfigGlobal::$sitename = str_replace("'","\"",$_POST["sitename"]);
 			POSConfigGlobal::$timezone = str_replace("'","\"",$_POST["timezone"]);

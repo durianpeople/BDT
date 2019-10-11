@@ -32,6 +32,11 @@ class POSConfigDB
 	 */
 	public static $database_name;
 
+	/**
+	 * @var string
+	 */
+	public static $port;
+
 	private static function findAndReplace(&$file, $search, $replace)
 	{
 		foreach ($file as $line => $text) {
@@ -58,6 +63,7 @@ class POSConfigDB
 		self::findAndReplace($current_config, 'POSConfigDB::$password', 'POSConfigDB::$password = "' . self::$password . '";');
 		self::findAndReplace($current_config, 'POSConfigDB::$host', 'POSConfigDB::$host = "' . self::$host . '";');
 		self::findAndReplace($current_config, 'POSConfigDB::$database_name', 'POSConfigDB::$database_name = "' . self::$database_name . '";');
+		self::findAndReplace($current_config, 'POSConfigDB::$port', 'POSConfigDB::$port = "' . self::$port . '";');
 
 		return file_put_contents(__ROOTDIR . "/configs/root.sys.php", implode("", $current_config)) == false ? false : true;
 	}
