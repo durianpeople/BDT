@@ -1,3 +1,6 @@
 .vagrant/
 **/composer.phar
 **/vendor/
+**/storage/
+**/public/res/
+**/public/cache/
