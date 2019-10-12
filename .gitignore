@@ -1,4 +1,4 @@
-.vagrant/
+**/.vagrant/
 **/composer.phar
 **/vendor/
 **/storage/
