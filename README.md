@@ -131,7 +131,7 @@ File ini digunakan di salah satu node database untuk inisialisasi *group replica
   SET SQL_LOG_BIN=1;
   ```
 
-- Mengganti parameter untuk membaca *binary log*
+- Mengganti parameter agar node dapat membaca *binary log*
 
   ```mysql
   CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='password' FOR CHANNEL 'group_replication_recovery';
@@ -227,3 +227,46 @@ report_host = "10.0.17.28"
 loose-group_replication_local_address = "10.0.17.28:33061"
 ```
 
+### `proxysql.sql`
+
+File ini digunakan untuk setup proxy.
+
+- Mengganti *credential* untuk login admin:
+
+  ```mysql
+  UPDATE global_variables SET variable_value='admin:password;posuser:pospassword' WHERE variable_name='admin-admin_credentials';
+  LOAD ADMIN VARIABLES TO RUNTIME;
+  SAVE ADMIN VARIABLES TO DISK;
+  ```
+
+- Memberitahu proxy untuk menggunakan user *monitor* untuk mengecek status node
+
+  ```mysql
+  UPDATE global_variables SET variable_value='monitor' WHERE variable_name='mysql-monitor_username';
+  LOAD MYSQL VARIABLES TO RUNTIME;
+  SAVE MYSQL VARIABLES TO DISK;
+  ```
+
+- ```mysql
+  INSERT INTO mysql_group_replication_hostgroups (writer_hostgroup, backup_writer_hostgroup, reader_hostgroup, offline_hostgroup, active, max_writers, writer_is_also_reader, max_transactions_behind) VALUES (2, 4, 3, 1, 1, 3, 1, 100);
+  ```
+
+- Mendaftarkan node database yang digunakan
+
+  ```mysql
+  INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (2, '10.0.17.28', 3306);
+  INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (2, '10.0.17.29', 3306);
+  INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (2, '10.0.17.30', 3306);
+  LOAD MYSQL SERVERS TO RUNTIME;
+  SAVE MYSQL SERVERS TO DISK;
+  ```
+
+- Membuat user untuk akses aplikasi website
+
+  ```mysql
+  INSERT INTO mysql_users(username, password, default_hostgroup) VALUES ('puzzleuser', 'puzzlepassword', 2);
+  LOAD MYSQL USERS TO RUNTIME;
+  SAVE MYSQL USERS TO DISK;
+  ```
+
+  
